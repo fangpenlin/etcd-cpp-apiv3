@@ -1,5 +1,6 @@
 #include "etcd/v3/AsyncKeepAliveAction.hpp"
 #include <etcd/v3/Transaction.hpp>
+#include <grpc/support/log.h>
 #include <chrono>
 
 using etcdserverpb::LeaseGrantRequest;
