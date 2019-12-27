@@ -1,6 +1,5 @@
 #include "etcd/v3/AsyncKeepAliveAction.hpp"
 #include <etcd/v3/Transaction.hpp>
-#include <grpc/support/log.h>
 #include <chrono>
 
 using etcdserverpb::LeaseGrantRequest;
@@ -32,7 +31,7 @@ etcdv3::AsyncKeepAliveAction::AsyncKeepAliveAction(ActionParameters param)
     }
 
     Type tag = static_cast<Type>(reinterpret_cast<size_t>(got_tag));
-    GPR_ASSERT(tag == Type::Connect);
+    assert(tag == Type::Connect);
 }
 
 void etcdv3::AsyncKeepAliveAction::waitForResponse()
@@ -72,7 +71,7 @@ void etcdv3::AsyncKeepAliveAction::waitForResponse()
             case Type::Finish:
                 return;
             default:
-                GPR_ASSERT(false);
+                assert(false);
                 break;
         }
     }
